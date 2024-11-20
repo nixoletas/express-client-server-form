@@ -15,44 +15,85 @@
         <input type="tel" name="phone" id="phone" placeholder="Enter your phone number">
         <button type="submit">Submit</button>
     </form>
-
+    
     <style>
+
         body {
+            background: linear-gradient(90deg, #007bff, #6c757d);
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
             box-sizing: border-box;
         }
 
         h1 {
             text-align: center;
             margin-top: 50px;
+            color: #fff;
         }
-
+        
+        
         form {
             display: flex;
             flex-direction: column;
             align-items: center;
             margin-top: 50px;
+            width: 300px;
         }
 
         input {
-            margin: 10px;
+            margin-bottom: 8px;
+            margin-top: 8px;
             padding: 10px;
             width: 300px;
             border: 1px solid #ccc;
             border-radius: 5px;
+            background-color: transparent;
+
+            /* placeholder color white */
+            color: #fff;
+            &::placeholder {
+                color: #fff;
+            }
+
+            &:focus {
+                outline: none;
+                border-color: #ffffff;
+                box-shadow: #b0bcff 0px 0px 5px;
+            }
+
         }
 
         button {
+            margin-bottom: 10px;
+            margin-top: 10px;
             padding: 10px;
-            width: 300px;
+            width: 100%;
             border: 1px solid #ccc;
             border-radius: 5px;
             background-color: #007bff;
             color: #fff;
             cursor: pointer;
+            transition: 200ms all;
+
+            &:hover {
+                background-color: #0056b3;
+            }
+
+            &:active {
+                background-color: #003366;
+            }
+
+            &:focus {
+                scale: 103%;
+                outline: none;
+            }
         }
+
     </style>
 
     <script>
