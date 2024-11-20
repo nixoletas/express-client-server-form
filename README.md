@@ -10,7 +10,7 @@ http://localhost:3000
 
 ### Server receives data
 
-```json
+```
     { 
         name: 'nick',
         age: '26',
