@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <!-- meta description -->
+    <meta name="description" content="Client | Server - Node Express Demo">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client | Server</title>
+</head>
+<body>
+    <h1>Client | Server</h1>
+    <form>
+        <input type="text" name="name" id="name" placeholder="Enter your name">
+        <input type="number" name="age" id="age" placeholder="Enter your age">
+        <input type="tel" name="phone" id="phone" placeholder="Enter your phone number">
+        <button type="submit">Submit</button>
+    </form>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        input {
+            margin: 10px;
+            padding: 10px;
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px;
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
+    </style>
+
+    <script>
+        const form = document.querySelector('form');
+
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            const name = document.querySelector('#name').value;
+            const age = document.querySelector('#age').value;
+            const phone = document.querySelector('#phone').value;
+
+            fetch('http://localhost:3000/send-form', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name,
+                    age,
+                    phone,
+                })
+            })
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error(error));
+
+            alert(`Form sent! Data: ${name}, ${age}, ${phone} \nCheck the console for more details.`);
+            form.reset();
+        });
+    </script>
+</body>
+</html>
